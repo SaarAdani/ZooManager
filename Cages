@@ -1,0 +1,63 @@
+package com.saar;
+
+
+public class Cages {
+
+    private static final int MAX_CAPACITY = 5;
+
+    private boolean predator;
+    private boolean aquatic;
+    private int animalsInside;
+    private Animals[] animals;
+
+    public Cages(boolean aquatic){
+
+        this.aquatic = aquatic;
+        animalsInside = 0;
+        animals = new Animals[MAX_CAPACITY];
+    }
+
+    public void addAnimal(Animals animal) {
+
+        if (animalsInside < MAX_CAPACITY) {
+
+            if (animalsInside == 0) {
+
+                predator = animal.isPredator();
+                aquatic = animal.isAquatic();
+            }
+
+            animals[animalsInside++] = animal;
+        }
+    }
+
+    public void print() {
+
+        System.out.println("animalsInside = " +animalsInside);
+
+        for (int i = 0; i < animals.length; i++) {
+
+            System.out.println(animals[i]);
+        }
+    }
+
+    public boolean isPredator() {
+
+        return predator;
+    }
+
+    public boolean isAquatic() {
+
+        return aquatic;
+    }
+
+    public int getAnimalsInside() {
+
+        return animalsInside;
+    }
+
+    public int getMaxCapacity() {
+
+        return MAX_CAPACITY;
+    }
+}
