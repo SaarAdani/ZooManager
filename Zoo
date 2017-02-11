@@ -1,0 +1,43 @@
+package com.saar;
+
+
+public class Zoo {
+
+    private String managerName;
+    private int predator;
+    private int aquatic;
+    private Cages[] cages;
+
+    public Zoo(String managerName, int predator, int aquatic) {
+
+        this.managerName = managerName;
+        this.predator = predator;
+        this.aquatic = aquatic;
+        cages = new Cages[predator+aquatic];
+    }
+
+    public boolean insertNewAnimal(Animals animal) {
+
+
+        for (int i = 0; i < aquatic; i++) {
+
+            for (int j = 0; j < cages[i].getMaxCapacity(); i++) {
+
+                if (cages[i].getAnimalsInside() == 0) {
+                    cages[i].addAnimal(animal);
+                }
+                else if (cages[i].getAnimalsInside() > 0) {
+
+                    if (cages[i].isAquatic() && cages[i].isPredator()){
+                        cages[i].addAnimal(animal);
+                    }
+                    else if (cages[i].isAquatic() && !cages[i].isPredator()){
+                        cages[i].addAnimal(animal);
+                    }
+                }
+
+            }
+        }
+
+    }
+}
