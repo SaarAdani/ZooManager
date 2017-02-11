@@ -36,7 +36,7 @@ public class Zoo {
             }
         }
 
-        if (!animal.isAquatic()) {
+        else {
             for (int i = aquatic; i < (aquatic+predator); i++) {
 
                 if (cages[i].getAnimalsInside() == 0) {
@@ -57,6 +57,6 @@ public class Zoo {
         return false;
     }
 
-    
+
 }
 
