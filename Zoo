@@ -17,27 +17,46 @@ public class Zoo {
     }
 
     public boolean insertNewAnimal(Animals animal) {
-
-
-        for (int i = 0; i < aquatic; i++) {
-
-            for (int j = 0; j < cages[i].getMaxCapacity(); i++) {
+        if (animal.isAquatic()) {
+            for (int i = 0; i < aquatic; i++) {
 
                 if (cages[i].getAnimalsInside() == 0) {
                     cages[i].addAnimal(animal);
-                }
-                else if (cages[i].getAnimalsInside() > 0) {
+                    return true;
+                } else if (cages[i].getAnimalsInside() > 0 && cages[i].getAnimalsInside() <= cages[i].getMaxCapacity()) {
 
-                    if (cages[i].isAquatic() && cages[i].isPredator()){
+                    if (cages[i].isAquatic() && cages[i].isPredator()) {
                         cages[i].addAnimal(animal);
-                    }
-                    else if (cages[i].isAquatic() && !cages[i].isPredator()){
+                        return true;
+                    } else if (cages[i].isAquatic() && !cages[i].isPredator()) {
                         cages[i].addAnimal(animal);
+                        return true;
                     }
                 }
-
             }
         }
 
+        if (!animal.isAquatic()) {
+            for (int i = aquatic; i < (aquatic+predator); i++) {
+
+                if (cages[i].getAnimalsInside() == 0) {
+                    cages[i].addAnimal(animal);
+                    return true;
+                } else if (cages[i].getAnimalsInside() > 0 && cages[i].getAnimalsInside() <= cages[i].getMaxCapacity()) {
+
+                    if (cages[i].isPredator()) {
+                        cages[i].addAnimal(animal);
+                        return true;
+                    } else if (!cages[i].isPredator()) {
+                        cages[i].addAnimal(animal);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
+
+    
 }
+
