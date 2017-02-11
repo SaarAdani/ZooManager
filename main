@@ -1,0 +1,23 @@
+package com.saar;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Animals tiger = new Animals("Tiger",true,false);
+        Animals monkey = new Animals("Monkey",false,false);
+        Animals lion = new Animals("Lion",true,false);
+        Animals goat = new Animals("Goat",false,false);
+        Animals shark = new Animals("Tiger",true,true);
+        Animals goldFish = new Animals("Gold Fish",false,true);
+        Animals starFish = new Animals("Star Fish",false,true);
+        //System.out.println(tiger.getDetails());
+
+        //Cages cage1 = new Cages(false);
+        //cage1.addAnimal(tiger);
+        //cage1.print();
+
+        Zoo zoo = new Zoo("Saar Adani", 5, 3);
+
+    }
+}
